@@ -18,8 +18,16 @@ services:
         exclude:
             - '../src/ServiceCatalog/Domain/'
 
+    WorkingHours\:
+        resource: '../src/WorkingHours/'
+        exclude:
+            - '../src/WorkingHours/Domain/'
+
     ServiceCatalog\Domain\Repository\ServiceRepositoryInterface:
         alias: ServiceCatalog\Infrastructure\Doctrine\Repository\DoctrineServiceRepository
+
+    WorkingHours\Domain\Repository\WorkingHoursRepositoryInterface:
+        alias: WorkingHours\Infrastructure\Doctrine\Repository\DoctrineWorkingHoursRepository
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

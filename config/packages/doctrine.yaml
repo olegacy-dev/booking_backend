@@ -27,6 +27,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/ServiceCatalog/Infrastructure/Doctrine/Entity'
                 prefix: 'ServiceCatalog\Infrastructure\Doctrine\Entity'
                 alias: ServiceCatalog
+            WorkingHours:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/WorkingHours/Infrastructure/Doctrine/Entity'
+                prefix: 'WorkingHours\Infrastructure\Doctrine\Entity'
+                alias: WorkingHours
         controller_resolver:
             auto_mapping: false
 
