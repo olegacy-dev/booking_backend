@@ -8,6 +8,9 @@ doctrine:
 
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
+        types:
+            datetime: \Carbon\Doctrine\DateTimeType
+            datetime_immutable: \Carbon\Doctrine\DateTimeImmutableType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -18,12 +21,12 @@ doctrine:
             Doctrine\DBAL\Platforms\PostgreSQLPlatform: identity
         auto_mapping: true
         mappings:
-            App:
-                type: attribute
+            ServiceEntity:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+                type: attribute
+                dir: '%kernel.project_dir%/src/ServiceCatalog/Infrastructure/Doctrine/Entity'
+                prefix: 'ServiceCatalog\Infrastructure\Doctrine\Entity'
+                alias: ServiceCatalog
         controller_resolver:
             auto_mapping: false
 
