@@ -13,11 +13,11 @@ final readonly class DoctrineWorkingHoursRepository implements WorkingHoursRepos
         private EntityManagerInterface $em
     ) {}
 
-    public function findByWeekday(int $weekday): array
+    public function findByWeekday(string $employeeId, int $weekday): array
     {
         $repository = $this->em->getRepository(WorkingHourEntity::class);
 
-        $entities = $repository->findBy(['weekday' => $weekday]);
+        $entities = $repository->findBy(['employeeId' => $employeeId,'weekday' => $weekday]);
 
         return array_map(fn (WorkingHourEntity $entity) => WorkingHourMapper::toDomain($entity), $entities);
     }

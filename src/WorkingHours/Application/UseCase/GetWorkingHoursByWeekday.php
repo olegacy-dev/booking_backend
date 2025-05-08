@@ -12,9 +12,9 @@ final readonly class GetWorkingHoursByWeekday
         private WorkingHoursRepositoryInterface $repository
     ) {}
 
-    public function __invoke(int $weekday): array
+    public function __invoke(string $employeeId, int $weekday): array
     {
-        $workingHours = $this->repository->findByWeekday($weekday);
+        $workingHours = $this->repository->findByWeekday($employeeId, $weekday);
 
         return array_map(fn (WorkingHour $workingHour) => new WorkingHourDto(
             $workingHour->getId()->toString(),

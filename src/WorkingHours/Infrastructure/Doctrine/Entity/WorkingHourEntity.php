@@ -10,8 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 final class WorkingHourEntity
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'guid')]
+    #[ORM\Column(name: 'id', type: 'guid', nullable: false)]
     private string $id;
+
+    #[ORM\Column(name: 'employee_id', type: 'guid', nullable: false)]
+    private string $employeeId;
 
     #[ORM\Column(name: 'weekday', type: 'integer', nullable: false)]
     private int $weekday;
@@ -27,11 +30,13 @@ final class WorkingHourEntity
 
     public function __construct(
         string $id,
+        string $employeeId,
         int $weekday,
         string $startTime,
         string $endTime
     ) {
         $this->id = $id;
+        $this->employeeId = $employeeId;
         $this->weekday = $weekday;
         $this->startTime = $startTime;
         $this->endTime = $endTime;
@@ -42,6 +47,11 @@ final class WorkingHourEntity
     public function getId(): string
     {
         return $this->id;
+    }
+
+    public function getEmployeeId(): string
+    {
+        return $this->employeeId;
     }
 
     public function getWeekday(): int

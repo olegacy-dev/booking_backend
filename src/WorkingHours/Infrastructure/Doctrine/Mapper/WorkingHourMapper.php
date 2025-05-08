@@ -12,6 +12,7 @@ final class WorkingHourMapper
     {
         return WorkingHour::create(
             Uuid::fromString($workingHourEntity->getId()),
+            Uuid::fromString($workingHourEntity->getEmployeeId()),
             $workingHourEntity->getWeekday(),
             $workingHourEntity->getStartTime(),
             $workingHourEntity->getEndTime(),
@@ -22,6 +23,7 @@ final class WorkingHourMapper
     {
         return new WorkingHourEntity(
             $workingHour->getId()->toString(),
+            $workingHour->getEmployeeId()->toString(),
             $workingHour->getWeekday(),
             $workingHour->getStartTime(),
             $workingHour->getEndTime(),

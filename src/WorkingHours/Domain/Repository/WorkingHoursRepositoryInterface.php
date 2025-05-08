@@ -9,5 +9,5 @@ interface WorkingHoursRepositoryInterface
     /**
      * @return WorkingHour[]
      */
-    public function findByWeekday(int $weekday): array;
+    public function findByWeekday(string $employeeId, int $weekday): array;
 }

@@ -8,20 +8,20 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/working-hours/{weekday}', name: 'working_hours_by_day', methods: ['GET'])]
-final class GetWorkingHoursByWeekdayAction extends AbstractController
+#[Route('/employees/{employeeId}/working-hours/{weekday}', name: 'working_hours_by_day', methods: ['GET'])]
+final class GetWorkingHoursByEmployeeAndWeekdayAction extends AbstractController
 {
     public function __construct(
         private readonly GetWorkingHoursByWeekday $getWorkingHours
     ) {}
 
-    public function __invoke(int $weekday): JsonResponse
+    public function __invoke(string $employeeId, int $weekday): JsonResponse
     {
         if ($weekday < 0 || $weekday > 6) {
             return $this->json(['error' => 'Invalid weekday'], Response::HTTP_BAD_REQUEST);
         }
 
-        $result = ($this->getWorkingHours)($weekday);
+        $result = ($this->getWorkingHours)($employeeId, $weekday);
 
         return $this->json($result);
     }

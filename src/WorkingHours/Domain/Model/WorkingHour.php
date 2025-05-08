@@ -8,19 +8,25 @@ final readonly class WorkingHour
 {
     public function __construct(
         private Uuid $id,
+        private Uuid $employeeId,
         private int $weekday,
         private string $startTime,
         private string $endTime
     ) {}
 
-    public static function create(Uuid $id, int $weekday, string $startTime, string $endTime): self
+    public static function create(Uuid $id,  Uuid $employeeId, int $weekday, string $startTime, string $endTime): self
     {
-        return new self($id, $weekday, $startTime, $endTime);
+        return new self($id, $employeeId, $weekday, $startTime, $endTime);
     }
 
     public function getId(): Uuid
     {
         return $this->id;
+    }
+
+    public function getEmployeeId(): Uuid
+    {
+        return $this->employeeId;
     }
 
     public function getWeekday(): int

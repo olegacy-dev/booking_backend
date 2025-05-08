@@ -22,10 +22,12 @@ final class Version20250505180037 extends AbstractMigration
         $this->addSql("
             CREATE TABLE working_hours (
                 id CHAR(36) NOT NULL PRIMARY KEY,
+                employee_id CHAR(36) NOT NULL,
                 weekday INT NOT NULL,
                 start_time VARCHAR(5) NOT NULL,
                 end_time VARCHAR(5) NOT NULL,
-                created_at DATETIME NOT NULL
+                created_at DATETIME NOT NULL,
+                FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE ON UPDATE CASCADE
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         ");
     }
