@@ -10,8 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 class ServiceEntity
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'guid')]
+    #[ORM\Column(name: 'id', type: 'guid', nullable: false)]
     private string $id;
+
+    #[ORM\Column(name: 'category_id', type: 'guid', nullable: false)]
+    private string $categoryId;
 
     #[ORM\Column(name: 'name', type: 'string', length: 100, nullable: false)]
     private string $name;
@@ -23,19 +26,21 @@ class ServiceEntity
     private int $durationInMinutes;
 
     #[ORM\Column(name: 'is_active', type: 'boolean', nullable: false)]
-    private bool $isActive = true;
+    private bool $isActive;
 
     #[ORM\Column(name: 'created_at', type: 'datetime_immutable', nullable: false)]
     private CarbonImmutable $createdAt;
 
     public function __construct(
         string $id,
+        string $categoryId,
         string $name,
         string $description,
         int $durationInMinutes,
         bool $isActive
     ) {
         $this->id = $id;
+        $this->categoryId = $categoryId;
         $this->name = $name;
         $this->description = $description;
         $this->durationInMinutes = $durationInMinutes;
@@ -47,6 +52,16 @@ class ServiceEntity
     public function getId(): string
     {
         return $this->id;
+    }
+
+    public function getCategoryId(): string
+    {
+        return $this->categoryId;
+    }
+
+    public function setCategoryId(string $categoryId): void
+    {
+        $this->categoryId = $categoryId;
     }
 
     public function getName(): string

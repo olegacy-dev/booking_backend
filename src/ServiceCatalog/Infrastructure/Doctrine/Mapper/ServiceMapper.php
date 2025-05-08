@@ -11,9 +11,11 @@ class ServiceMapper
     public static function toDomain(ServiceEntity $serviceEntity): Service
     {
         $id = Uuid::fromString($serviceEntity->getId());
+        $categoryId = Uuid::fromString($serviceEntity->getCategoryId());
 
         return Service::create(
             $id,
+            $categoryId,
             $serviceEntity->getName(),
             $serviceEntity->getDescription(),
             $serviceEntity->getDurationInMinutes(),
@@ -25,6 +27,7 @@ class ServiceMapper
     {
         return new ServiceEntity(
             $service->getId()->toString(),
+            $service->getCategoryId()->toString(),
             $service->getName(),
             $service->getDescription(),
             $service->getDurationInMinutes(),

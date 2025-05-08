@@ -40,5 +40,8 @@ services:
     Employee\Domain\Repository\EmployeeServiceAssignmentRepositoryInterface:
         alias: Employee\Infrastructure\Doctrine\Repository\DoctrineEmployeeServiceAssignmentRepository
 
+    ServiceCatalog\Domain\Repository\ServiceCategoryRepositoryInterface:
+        alias: ServiceCatalog\Infrastructure\Doctrine\Repository\DoctrineServiceCategoryRepository
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
