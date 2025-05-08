@@ -32,6 +32,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
+            "Employee\\": "src/Employee",
             "Shared\\": "src/Shared",
             "ServiceCatalog\\": "src/ServiceCatalog",
             "WorkingHours\\": "src/WorkingHours"

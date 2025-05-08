@@ -33,6 +33,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/WorkingHours/Infrastructure/Doctrine/Entity'
                 prefix: 'WorkingHours\Infrastructure\Doctrine\Entity'
                 alias: WorkingHours
+            Employee:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Employee/Infrastructure/Doctrine/Entity'
+                prefix: 'Employee\Infrastructure\Doctrine\Entity'
+                alias: Employee
         controller_resolver:
             auto_mapping: false
 
