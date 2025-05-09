@@ -16,6 +16,7 @@ final class WorkingHourMapper
             $workingHourEntity->getWeekday(),
             $workingHourEntity->getStartTime(),
             $workingHourEntity->getEndTime(),
+            $workingHourEntity->getCreatedAt(),
         );
     }
 
@@ -27,6 +28,7 @@ final class WorkingHourMapper
             $workingHour->getWeekday(),
             $workingHour->getStartTime(),
             $workingHour->getEndTime(),
+            $workingHour->getCreatedAt(),
         );
     }
 }

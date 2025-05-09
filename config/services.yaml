@@ -29,6 +29,10 @@ services:
         resource: '../src/Booking/'
         exclude:
             - '../src/Booking/Domain/'
+    User\:
+        resource: '../src/User/'
+        exclude:
+            - '../src/User/Domain/'
 
     ServiceCatalog\Domain\Repository\ServiceRepositoryInterface:
         alias: ServiceCatalog\Infrastructure\Doctrine\Repository\DoctrineServiceRepository
@@ -51,5 +55,7 @@ services:
     Booking\Application\Service\SlotAvailabilityCheckerInterface:
         alias: Booking\Application\Service\SlotAvailabilityChecker
 
+    User\Domain\Repository\SmsVerificationAttemptRepositoryInterface:
+        alias: User\Infrastructure\Doctrine\Repository\DoctrineSmsVerificationAttemptRepository
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

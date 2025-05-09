@@ -33,15 +33,15 @@ final class WorkingHourEntity
         string $employeeId,
         int $weekday,
         string $startTime,
-        string $endTime
+        string $endTime,
+        Carbon $createdAt
     ) {
         $this->id = $id;
         $this->employeeId = $employeeId;
         $this->weekday = $weekday;
         $this->startTime = $startTime;
         $this->endTime = $endTime;
-
-        $this->createdAt = new Carbon();
+        $this->createdAt = $createdAt;
     }
 
     public function getId(): string

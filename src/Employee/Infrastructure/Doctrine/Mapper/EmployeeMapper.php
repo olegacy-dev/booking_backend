@@ -13,7 +13,8 @@ final readonly class EmployeeMapper
         return Employee::create(
             Uuid::fromString($employeeEntity->getId()),
             $employeeEntity->getName(),
-            Uuid::fromString($employeeEntity->getCategoryId())
+            Uuid::fromString($employeeEntity->getCategoryId()),
+            $employeeEntity->getCreatedAt()
         );
     }
 
@@ -23,6 +24,7 @@ final readonly class EmployeeMapper
             $employee->getId()->toString(),
             $employee->getName(),
             $employee->getCategoryId()->toString(),
+            $employee->getCreatedAt()
         );
     }
 }

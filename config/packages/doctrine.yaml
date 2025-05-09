@@ -45,6 +45,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Booking/Infrastructure/Doctrine/Entity'
                 prefix: 'Booking\Infrastructure\Doctrine\Entity'
                 alias: Booking
+            User:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/User/Infrastructure/Doctrine/Entity'
+                prefix: 'User\Infrastructure\Doctrine\Entity'
+                alias: User
         controller_resolver:
             auto_mapping: false
 

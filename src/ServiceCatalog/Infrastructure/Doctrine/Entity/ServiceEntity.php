@@ -37,7 +37,8 @@ class ServiceEntity
         string $name,
         string $description,
         int $durationInMinutes,
-        bool $isActive
+        bool $isActive,
+        Carbon $createdAt
     ) {
         $this->id = $id;
         $this->categoryId = $categoryId;
@@ -45,8 +46,7 @@ class ServiceEntity
         $this->description = $description;
         $this->durationInMinutes = $durationInMinutes;
         $this->isActive = $isActive;
-
-        $this->createdAt = new Carbon();
+        $this->createdAt = $createdAt;
     }
 
     public function getId(): string

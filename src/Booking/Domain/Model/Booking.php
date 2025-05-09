@@ -13,11 +13,12 @@ final readonly class Booking
         private Carbon $start,
         private Carbon $end,
         private array $serviceIds,
+        private Carbon $createdAt
     ) {}
 
-    public static function create(Uuid $id, Uuid $employeeId, Carbon $start, Carbon $end, array $serviceIds): self
+    public static function create(Uuid $id, Uuid $employeeId, Carbon $start, Carbon $end, array $serviceIds, Carbon $createdAt): self
     {
-        return new self($id, $employeeId, $start, $end, $serviceIds);
+        return new self($id, $employeeId, $start, $end, $serviceIds, $createdAt);
     }
 
     public function getId(): Uuid
@@ -43,5 +44,10 @@ final readonly class Booking
     public function getServiceIds(): array
     {
         return $this->serviceIds;
+    }
+
+    public function getCreatedAt(): Carbon
+    {
+        return $this->createdAt;
     }
 }

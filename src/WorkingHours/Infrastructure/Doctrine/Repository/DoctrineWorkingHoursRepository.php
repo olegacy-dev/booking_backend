@@ -15,9 +15,9 @@ final readonly class DoctrineWorkingHoursRepository implements WorkingHoursRepos
 
     public function findByEmployeeAndWeekday(string $employeeId, int $weekday): array
     {
-        $repository = $this->em->getRepository(WorkingHourEntity::class);
+        $repo = $this->em->getRepository(WorkingHourEntity::class);
 
-        $entities = $repository->findBy(['employeeId' => $employeeId,'weekday' => $weekday]);
+        $entities = $repo->findBy(['employeeId' => $employeeId,'weekday' => $weekday]);
 
         return array_map(fn (WorkingHourEntity $entity) => WorkingHourMapper::toDomain($entity), $entities);
     }

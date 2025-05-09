@@ -2,6 +2,7 @@
 
 namespace Employee\Domain\Model;
 
+use Carbon\Carbon;
 use Shared\Domain\ValueObject\Uuid;
 
 final readonly class Employee
@@ -10,11 +11,12 @@ final readonly class Employee
         private Uuid $id,
         private string $name,
         private Uuid $categoryId,
+        private Carbon $createdAt
     ) {}
 
-    public static function create(Uuid $id, string $name, Uuid $categoryId): self
+    public static function create(Uuid $id, string $name, Uuid $categoryId, Carbon $createdAt): self
     {
-        return new self($id, $name, $categoryId);
+        return new self($id, $name, $categoryId, $createdAt);
     }
 
     public function getId(): Uuid
@@ -30,5 +32,10 @@ final readonly class Employee
     public function getCategoryId(): Uuid
     {
         return $this->categoryId;
+    }
+
+    public function getCreatedAt(): Carbon
+    {
+        return $this->createdAt;
     }
 }

@@ -34,14 +34,14 @@ final class BookingEntity
         Carbon $startAt,
         Carbon $endAt,
         array $serviceIds,
+        Carbon $createdAt
     ) {
         $this->id = $id;
         $this->employeeId = $employeeId;
         $this->startAt = $startAt;
         $this->endAt = $endAt;
         $this->serviceIds = $serviceIds;
-
-        $this->createdAt = new Carbon();
+        $this->createdAt = $createdAt;
     }
 
     public function getId(): string

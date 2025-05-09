@@ -20,6 +20,7 @@ class ServiceMapper
             $serviceEntity->getDescription(),
             $serviceEntity->getDurationInMinutes(),
             $serviceEntity->isActive(),
+            $serviceEntity->getCreatedAt()
         );
     }
 
@@ -32,6 +33,7 @@ class ServiceMapper
             $service->getDescription(),
             $service->getDurationInMinutes(),
             $service->isActive(),
+            $service->getCreatedAt()
         );
     }
 }

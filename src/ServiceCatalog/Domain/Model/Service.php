@@ -2,6 +2,7 @@
 
 namespace ServiceCatalog\Domain\Model;
 
+use Carbon\Carbon;
 use Shared\Domain\ValueObject\Uuid;
 
 final readonly class Service
@@ -12,12 +13,13 @@ final readonly class Service
         private string $name,
         private string $description,
         private int $durationInMinutes,
-        private bool $isActive
+        private bool $isActive,
+        private Carbon $createdAt
     ) {}
 
-    public static function create(Uuid $id, Uuid $categoryId, string $name, string $description, int $durationMinutes, bool $isActive): self
+    public static function create(Uuid $id, Uuid $categoryId, string $name, string $description, int $durationMinutes, bool $isActive, Carbon $createdAt): self
     {
-        return new self($id, $categoryId,$name, $description, $durationMinutes, $isActive);
+        return new self($id, $categoryId,$name, $description, $durationMinutes, $isActive, $createdAt);
     }
 
     public function getId(): Uuid
@@ -48,5 +50,10 @@ final readonly class Service
     public function isActive(): bool
     {
         return $this->isActive;
+    }
+
+    public function getCreatedAt(): Carbon
+    {
+        return $this->createdAt;
     }
 }

@@ -19,12 +19,11 @@ class ServiceCategoryEntity
     #[ORM\Column(name: 'created_at', type: 'datetime', nullable: false)]
     private Carbon $createdAt;
 
-    public function __construct(string $id, string $name)
+    public function __construct(string $id, string $name, Carbon $createdAt)
     {
         $this->id = $id;
         $this->name = $name;
-
-        $this->createdAt = new Carbon();
+        $this->createdAt = $createdAt;
     }
 
     public function getId(): string

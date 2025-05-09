@@ -12,7 +12,8 @@ final class ServiceCategoryMapper
     {
         return new ServiceCategory(
             Uuid::fromString($entity->getId()),
-            $entity->getName()
+            $entity->getName(),
+            $entity->getCreatedAt()
         );
     }
 
@@ -20,7 +21,8 @@ final class ServiceCategoryMapper
     {
         return new ServiceCategoryEntity(
             $category->getId()->toString(),
-            $category->getName()
+            $category->getName(),
+            $category->getCreatedAt()
         );
     }
 }

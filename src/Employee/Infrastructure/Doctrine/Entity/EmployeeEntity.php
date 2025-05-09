@@ -22,13 +22,12 @@ final class EmployeeEntity
     #[ORM\Column(name: 'created_at', type: 'datetime', nullable: false)]
     private Carbon $createdAt;
 
-    public function __construct(string $id, string $name, string $categoryId)
+    public function __construct(string $id, string $name, string $categoryId, Carbon $createdAt)
     {
         $this->id = $id;
         $this->name = $name;
         $this->categoryId = $categoryId;
-
-        $this->createdAt = new Carbon();
+        $this->createdAt = $createdAt;
     }
 
     public function getId(): string

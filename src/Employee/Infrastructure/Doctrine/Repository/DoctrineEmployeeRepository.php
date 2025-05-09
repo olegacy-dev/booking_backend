@@ -17,8 +17,8 @@ final readonly class DoctrineEmployeeRepository implements EmployeeRepositoryInt
 
     public function findByCategoryId(string $categoryId): array
     {
-        $repository = $this->em->getRepository(EmployeeEntity::class);
-        $employees = $repository->findBy(['categoryId' => $categoryId]);
+        $repo = $this->em->getRepository(EmployeeEntity::class);
+        $employees = $repo->findBy(['categoryId' => $categoryId]);
 
         return array_map(fn (EmployeeEntity $employeeEntity) => EmployeeMapper::toDomain($employeeEntity), $employees);
     }

@@ -16,9 +16,9 @@ final readonly class DoctrineServiceRepository implements ServiceRepositoryInter
 
     public function findAllActive(): array
     {
-        $repository = $this->em->getRepository(ServiceEntity::class);
+        $repo = $this->em->getRepository(ServiceEntity::class);
 
-        $entities = $repository->findBy(['isActive' => true]);
+        $entities = $repo->findBy(['isActive' => true]);
 
         return array_map(fn (ServiceEntity $entity) => ServiceMapper::toDomain($entity), $entities);
     }
