@@ -57,5 +57,8 @@ services:
 
     User\Domain\Repository\SmsVerificationAttemptRepositoryInterface:
         alias: User\Infrastructure\Doctrine\Repository\DoctrineSmsVerificationAttemptRepository
+
+    User\Domain\Service\SmsSenderInterface:
+        alias: User\Infrastructure\Notification\Sms\Sender\StubSmsSender
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
