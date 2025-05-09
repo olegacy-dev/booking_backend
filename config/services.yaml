@@ -17,16 +17,18 @@ services:
         resource: '../src/ServiceCatalog/'
         exclude:
             - '../src/ServiceCatalog/Domain/'
-
     WorkingHours\:
         resource: '../src/WorkingHours/'
         exclude:
             - '../src/WorkingHours/Domain/'
-
     Employee\:
         resource: '../src/Employee/'
         exclude:
             - '../src/Employee/Domain/'
+    Booking\:
+        resource: '../src/Booking/'
+        exclude:
+            - '../src/Booking/Domain/'
 
     ServiceCatalog\Domain\Repository\ServiceRepositoryInterface:
         alias: ServiceCatalog\Infrastructure\Doctrine\Repository\DoctrineServiceRepository
@@ -42,6 +44,12 @@ services:
 
     ServiceCatalog\Domain\Repository\ServiceCategoryRepositoryInterface:
         alias: ServiceCatalog\Infrastructure\Doctrine\Repository\DoctrineServiceCategoryRepository
+
+    Booking\Domain\Repository\BookingRepositoryInterface:
+        alias: Booking\Infrastructure\Doctrine\Repository\DoctrineBookingRepository
+
+    Booking\Application\Service\SlotAvailabilityCheckerInterface:
+        alias: Booking\Application\Service\SlotAvailabilityChecker
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

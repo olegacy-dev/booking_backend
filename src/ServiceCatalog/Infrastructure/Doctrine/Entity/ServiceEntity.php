@@ -2,7 +2,7 @@
 
 namespace ServiceCatalog\Infrastructure\Doctrine\Entity;
 
-use Carbon\CarbonImmutable;
+use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -28,8 +28,8 @@ class ServiceEntity
     #[ORM\Column(name: 'is_active', type: 'boolean', nullable: false)]
     private bool $isActive;
 
-    #[ORM\Column(name: 'created_at', type: 'datetime_immutable', nullable: false)]
-    private CarbonImmutable $createdAt;
+    #[ORM\Column(name: 'created_at', type: 'datetime', nullable: false)]
+    private Carbon $createdAt;
 
     public function __construct(
         string $id,
@@ -46,7 +46,7 @@ class ServiceEntity
         $this->durationInMinutes = $durationInMinutes;
         $this->isActive = $isActive;
 
-        $this->createdAt = new CarbonImmutable();
+        $this->createdAt = new Carbon();
     }
 
     public function getId(): string
@@ -104,7 +104,7 @@ class ServiceEntity
         $this->isActive = $isActive;
     }
 
-    public function getCreatedAt(): CarbonImmutable
+    public function getCreatedAt(): Carbon
     {
         return $this->createdAt;
     }

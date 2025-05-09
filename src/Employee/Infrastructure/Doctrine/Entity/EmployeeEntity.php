@@ -2,7 +2,7 @@
 
 namespace Employee\Infrastructure\Doctrine\Entity;
 
-use Carbon\CarbonImmutable;
+use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -19,8 +19,8 @@ final class EmployeeEntity
     #[ORM\Column(name: 'category_id', type: 'guid', nullable: false)]
     private string $categoryId;
 
-    #[ORM\Column(name: 'created_at', type: 'datetime_immutable', nullable: false)]
-    private CarbonImmutable $createdAt;
+    #[ORM\Column(name: 'created_at', type: 'datetime', nullable: false)]
+    private Carbon $createdAt;
 
     public function __construct(string $id, string $name, string $categoryId)
     {
@@ -28,7 +28,7 @@ final class EmployeeEntity
         $this->name = $name;
         $this->categoryId = $categoryId;
 
-        $this->createdAt = new CarbonImmutable();
+        $this->createdAt = new Carbon();
     }
 
     public function getId(): string
@@ -56,7 +56,7 @@ final class EmployeeEntity
         $this->categoryId = $categoryId;
     }
 
-    public function getCreatedAt(): CarbonImmutable
+    public function getCreatedAt(): Carbon
     {
         return $this->createdAt;
     }

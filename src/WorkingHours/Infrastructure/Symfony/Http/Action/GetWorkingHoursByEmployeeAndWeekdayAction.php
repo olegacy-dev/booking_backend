@@ -2,7 +2,7 @@
 
 namespace WorkingHours\Infrastructure\Symfony\Http\Action;
 
-use WorkingHours\Application\UseCase\GetWorkingHoursByWeekday;
+use WorkingHours\Application\UseCase\GetWorkingHoursByEmployeeAndWeekday;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class GetWorkingHoursByEmployeeAndWeekdayAction extends AbstractController
 {
     public function __construct(
-        private readonly GetWorkingHoursByWeekday $getWorkingHours
+        private readonly GetWorkingHoursByEmployeeAndWeekday $getWorkingHours
     ) {}
 
     public function __invoke(string $employeeId, int $weekday): JsonResponse

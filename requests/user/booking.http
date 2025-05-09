@@ -1,0 +1,2 @@
+### Get available stots of employee for selected services by month
+GET {{host}}/available-slots?employeeId=80895c74-6f38-4cd3-940a-1e89da2c2048&serviceIds[]=4f5b9eb3-9183-401f-ad02-ecdce5a8d154&month=2025-05

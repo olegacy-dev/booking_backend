@@ -35,7 +35,8 @@
             "Employee\\": "src/Employee",
             "Shared\\": "src/Shared",
             "ServiceCatalog\\": "src/ServiceCatalog",
-            "WorkingHours\\": "src/WorkingHours"
+            "WorkingHours\\": "src/WorkingHours",
+            "Booking\\": "src/Booking"
         }
     },
     "autoload-dev": {

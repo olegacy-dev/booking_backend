@@ -2,7 +2,7 @@
 
 namespace WorkingHours\Infrastructure\Doctrine\Entity;
 
-use Carbon\CarbonImmutable;
+use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -25,8 +25,8 @@ final class WorkingHourEntity
     #[ORM\Column(name: 'end_time', type: 'string', length: 5, nullable: false)]
     private string $endTime;
 
-    #[ORM\Column(name: 'created_at', type: 'datetime_immutable', nullable: false)]
-    private CarbonImmutable $createdAt;
+    #[ORM\Column(name: 'created_at', type: 'datetime', nullable: false)]
+    private Carbon $createdAt;
 
     public function __construct(
         string $id,
@@ -41,7 +41,7 @@ final class WorkingHourEntity
         $this->startTime = $startTime;
         $this->endTime = $endTime;
 
-        $this->createdAt = new CarbonImmutable();
+        $this->createdAt = new Carbon();
     }
 
     public function getId(): string
@@ -84,7 +84,7 @@ final class WorkingHourEntity
         $this->endTime = $endTime;
     }
 
-    public function getCreatedAt(): CarbonImmutable
+    public function getCreatedAt(): Carbon
     {
         return $this->createdAt;
     }

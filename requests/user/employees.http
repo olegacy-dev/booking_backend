@@ -1,0 +1,2 @@
+### Get available employees by selected services
+GET {{host}}/employees?serviceIds[]=4f5b9eb3-9183-401f-ad02-ecdce5a8d154
