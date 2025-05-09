@@ -4,10 +4,11 @@ namespace User\Infrastructure\Doctrine\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
 use User\Domain\Model\User;
+use User\Domain\Repository\UserRepositoryInterface;
 use User\Infrastructure\Doctrine\Entity\UserEntity;
 use User\Infrastructure\Doctrine\Mapper\UserMapper;
 
-final readonly class DoctrineUserRepository
+final readonly class DoctrineUserRepository implements UserRepositoryInterface
 {
     public function __construct(
         private EntityManagerInterface $em

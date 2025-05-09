@@ -1,0 +1,20 @@
+### Request sms auth code
+POST {{host}}/api/auth/request
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "phone_code": "1",
+  "phone_number": "5551234567"
+}
+
+
+### Verify user's auth code
+POST {{host}}/api/auth/verify
+Content-Type: application/json
+
+{
+  "code": "806616",
+  "phone_code": "1",
+  "phone_number": "5551234567"
+}

@@ -60,5 +60,8 @@ services:
 
     User\Domain\Service\SmsSenderInterface:
         alias: User\Infrastructure\Notification\Sms\Sender\StubSmsSender
+
+    User\Domain\Repository\UserRepositoryInterface:
+        alias: User\Infrastructure\Doctrine\Repository\DoctrineUserRepository
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

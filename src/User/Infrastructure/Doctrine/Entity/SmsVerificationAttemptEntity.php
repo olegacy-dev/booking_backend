@@ -14,8 +14,8 @@ class SmsVerificationAttemptEntity
     #[ORM\Column(name: 'id', type: 'string', length: 36, nullable: false)]
     public string $id;
 
-    #[ORM\Column(name: 'name', type: 'string', length: 100, nullable: false)]
-    public string $name;
+    #[ORM\Column(name: 'name', type: 'string', length: 100, nullable: true)]
+    public ?string $name;
 
     #[ORM\Column(name: 'phone_code', type: 'string', length: 8, nullable: false)]
     public string $phoneCode;
@@ -37,7 +37,7 @@ class SmsVerificationAttemptEntity
 
     public function __construct(
         string $id,
-        string $name,
+        ?string $name,
         string $phoneCode,
         string $phoneNumber,
         string $code,
@@ -60,9 +60,16 @@ class SmsVerificationAttemptEntity
         return $this->id;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
+    }
+
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     public function getPhoneCode(): string
@@ -70,9 +77,23 @@ class SmsVerificationAttemptEntity
         return $this->phoneCode;
     }
 
+    public function setPhoneCode(string $phoneCode): self
+    {
+        $this->phoneCode = $phoneCode;
+
+        return $this;
+    }
+
     public function getPhoneNumber(): string
     {
         return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
     }
 
     public function getCode(): string
@@ -80,14 +101,35 @@ class SmsVerificationAttemptEntity
         return $this->code;
     }
 
+    public function setCode(string $code): self
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
     public function getExpiresAt(): Carbon
     {
         return $this->expiresAt;
     }
 
+    public function setExpiresAt(Carbon $expiresAt): self
+    {
+        $this->expiresAt = $expiresAt;
+
+        return $this;
+    }
+
     public function getAttempts(): int
     {
         return $this->attempts;
+    }
+
+    public function setAttempts(int $attempts): self
+    {
+        $this->attempts = $attempts;
+
+        return $this;
     }
 
     public function getCreatedAt(): Carbon

@@ -40,9 +40,22 @@ final readonly class DoctrineSmsVerificationAttemptRepository implements SmsVeri
 
     public function save(SmsVerificationAttempt $attempt): void
     {
-        $entity = SmsVerificationAttemptMapper::toEntity($attempt);
+        $existing = $this->em->getRepository(SmsVerificationAttemptEntity::class)->find($attempt->getId()->toString());
 
-        $this->em->persist($entity);
+        if ($existing) {
+            $existing
+                ->setCode($attempt->getCode())
+                ->setAttempts($attempt->getAttempts())
+                ->setExpiresAt($attempt->getExpiresAt())
+                ->setName($attempt->getName())
+                ->setPhoneCode($attempt->getPhoneCode())
+                ->setPhoneNumber($attempt->getPhoneNumber());
+        } else {
+            $entity = SmsVerificationAttemptMapper::toEntity($attempt);
+
+            $this->em->persist($entity);
+        }
+
         $this->em->flush();
     }
 
