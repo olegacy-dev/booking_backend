@@ -3,9 +3,9 @@ POST {{host}}/api/auth/request
 Content-Type: application/json
 
 {
-  "name": "John Doe",
+  "name": "Smith",
   "phone_code": "1",
-  "phone_number": "5551234567"
+  "phone_number": "5551234568"
 }
 
 
@@ -14,7 +14,12 @@ POST {{host}}/api/auth/verify
 Content-Type: application/json
 
 {
-  "code": "806616",
+  "code": "575567",
   "phone_code": "1",
-  "phone_number": "5551234567"
+  "phone_number": "5551234568"
 }
+
+
+###
+GET {{host}}/api/me
+Authorization: Bearer {{access_token}}

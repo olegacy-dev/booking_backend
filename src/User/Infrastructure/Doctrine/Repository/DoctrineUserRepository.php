@@ -37,4 +37,11 @@ final readonly class DoctrineUserRepository implements UserRepositoryInterface
         $this->em->persist($entity);
         $this->em->flush();
     }
+
+    public function findById(string $id): ?User
+    {
+        $entity = $this->em->getRepository(UserEntity::class)->find($id);
+
+        return $entity ? UserMapper::toDomain($entity) : null;
+    }
 }

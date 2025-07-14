@@ -2,7 +2,9 @@
 
 namespace User\Infrastructure\Symfony\Http\Action;
 
+use User\Infrastructure\Security\JwtUser;
 use Exception;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +15,8 @@ use User\Application\Service\AuthCodeVerificationService;
 final class AuthVerifyAction extends AbstractController
 {
     public function __construct(
-        private readonly AuthCodeVerificationService $authCodeVerificationService
+        private readonly AuthCodeVerificationService $authCodeVerificationService,
+        private readonly JWTTokenManagerInterface $jwtTokenManager,
     ) {}
 
     public function __invoke(Request $request): Response
@@ -30,13 +33,16 @@ final class AuthVerifyAction extends AbstractController
 
         try {
             $user = $this->authCodeVerificationService->verify($phoneCode, $phoneNumber, $code);
-        } catch (Exception $e) {
+
+            $jwtUser = new JwtUser($user->getId()->toString(), $user->getRoles());
+        } catch (Exception) {
             return $this->json(['error' => 'Code verification failed'], Response::HTTP_BAD_REQUEST);
         }
 
         return $this->json([
             'id' => $user->getId()->toString(),
             'name' => $user->getName(),
+            'access_token' => $this->jwtTokenManager->create($jwtUser),
         ]);
     }
 }

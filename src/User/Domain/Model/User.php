@@ -12,7 +12,8 @@ final readonly class User
         private string $name,
         private string $phoneCode,
         private string $phoneNumber,
-        private Carbon $createdAt
+        private Carbon $createdAt,
+        private array $roles = ['ROLE_USER']
     ) {}
 
     public static function register(
@@ -20,9 +21,10 @@ final readonly class User
         string $name,
         string $phoneCode,
         string $phoneNumber,
-        Carbon $createdAt
+        Carbon $createdAt,
+        array $roles = ['ROLE_USER']
     ): self {
-        return new self($id, $name, $phoneCode, $phoneNumber, $createdAt);
+        return new self($id, $name, $phoneCode, $phoneNumber, $createdAt, $roles);
     }
 
     public function getId(): Uuid
@@ -48,5 +50,10 @@ final readonly class User
     public function getCreatedAt(): Carbon
     {
         return $this->createdAt;
+    }
+
+    public function getRoles(): array
+    {
+        return $this->roles;
     }
 }

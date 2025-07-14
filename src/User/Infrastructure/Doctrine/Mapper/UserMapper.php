@@ -16,7 +16,8 @@ class UserMapper
             $entity->name,
             $entity->phoneCode,
             $entity->phoneNumber,
-            $entity->createdAt
+            $entity->createdAt,
+            $entity->getRoles(),
         );
     }
 
@@ -28,6 +29,7 @@ class UserMapper
             $domain->getPhoneCode(),
             $domain->getPhoneNumber(),
             $domain->getCreatedAt(),
+            $domain->getRoles(),
         );
     }
 }

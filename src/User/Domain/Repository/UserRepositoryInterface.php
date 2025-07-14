@@ -11,4 +11,6 @@ interface UserRepositoryInterface
     public function existsByPhone(string $phoneCode, string $phoneNumber): bool;
 
     public function save(User $user): void;
+
+    public function findById(string $id): ?User;
 }

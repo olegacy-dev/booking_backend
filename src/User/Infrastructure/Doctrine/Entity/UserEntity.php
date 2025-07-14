@@ -23,16 +23,20 @@ class UserEntity
     #[ORM\Column(name: 'phone_number', type: 'string', length: 32, nullable: false)]
     public string $phoneNumber;
 
+    #[ORM\Column(name: 'roles', type: 'json')]
+    public array $roles;
+
     #[ORM\Column(name: 'created_at', type: 'datetime', nullable: false)]
     public Carbon $createdAt;
 
-    public function __construct(string $id, string $name, string $phoneCode, string $phoneNumber, Carbon $createdAt)
+    public function __construct(string $id, string $name, string $phoneCode, string $phoneNumber, Carbon $createdAt, array $roles = ['ROLE_USER'])
     {
         $this->id = $id;
         $this->name = $name;
         $this->phoneCode = $phoneCode;
         $this->phoneNumber = $phoneNumber;
         $this->createdAt =  $createdAt;
+        $this->roles = $roles;
     }
 
     public function getId(): string
@@ -58,6 +62,11 @@ class UserEntity
     public function getCreatedAt(): Carbon
     {
         return $this->createdAt;
+    }
+
+    public function getRoles(): array
+    {
+        return $this->roles;
     }
 }
 
